@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>clickAndPoint Demo</title>
+    <style>
+
+      html, body {
+        margin:0;
+        padding:0;
+      }
+
+      body {
+        padding-top:50px;
+      }
+
+      #outer {
+        margin:0 auto;
+        height:500px;
+        width:500px;
+        border:1px solid red;
+        position: relative;
+      }
+
+      #middle {
+        height:300px;
+        width:300px;
+        border:1px solid green;
+        position: absolute;
+        top:20px;
+        left:10px;
+      }
+
+      .inner {
+        height:70px;
+        margin:20px;
+        border:1px solid blue;
+      }
+
+      .info {
+        width:400px;
+        margin:0 auto;
+        padding:50px 0;
+      }
+      a {
+        cursor: pointer !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="info">
+      <span>Click and drag the following link to your bookmarks bar to use clickAndPoint on any page. Or try it on this page (it's already running): </span>
+      <a href="#" id="clickAndPointLink">clickAndPoint</a>
+    </div>
+    <div id="outer">
+      <div id="middle">
+        <div class="inner">
+        </div>
+        <div class="inner">
+        </div>
+        <div class="inner">
+        </div>
+      </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+      $(function() {
+        //is there a cleaner way to do this?
+        $.ajax({
+          url: 'clickAndPoint.js',
+          dataType: 'text',
+          success: function(js) {
+            //load the contents of the script in the link so you can drag it to your bookmarks
+            $('#clickAndPointLink').attr('href','javascript:'+escape(js)+'void(0);');
+            //run it on this page
+            eval(js);
+          }
+        });
+        
+      });
+    </script>
+  </body>
+</html>
