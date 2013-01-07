@@ -38,7 +38,7 @@
         clickAndPoint.locationY = clickY - offset.top;
       }
 
-      clickAndPoint.callback();
+      clickAndPoint.callback(e);
     },
 
     setup : function(options) {
