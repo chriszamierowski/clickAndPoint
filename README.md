@@ -7,7 +7,7 @@ When the bookmarklet is clicked on a page, clickAndPoint will run immediately an
 
   1. element : (string) the DOM element that the click coordinates should be relative to. This can be any jQuery selector. If none is provided, it will default to 'body'
   2. progressive : (boolean) if true, will calculate coordinates relative to your last click rather than to a particular element. This defaults to false. Note that the first click (assuming you haven't clicked anywhere yet) will show the value relative to the body as well as that a value of true essentially overrides any value passed for 'element' since the click are relative to each other rather than the DOM
-  3. callback : (function literal) a function that will override the default callback function when a click is made. the callback function can make use of any internal variables it wants - the ones of most interest are clickAndPoint.locationX and clickAndPoint.locationY. It will default to an internally defined function that prints information about your click
+  3. callback : (function literal) a function that will override the default callback function when a click is made. the callback function can make use of any internal variables it wants - the ones of most interest are clickAndPoint.locationX and clickAndPoint.locationY. It is given one parameter, the click event. It will default to an internally defined function that prints information about your click
 
 To try it out, open demo.html.
 
